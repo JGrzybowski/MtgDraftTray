@@ -1,5 +1,7 @@
 /* [Box Paremeters] */
-// SectionSizes = [15,15,15];
+CardThickness = 0.8; // [0.8:Dragon Shields Double Sleeved, 0.75:Ultra Pro Eclipse Double Sleeved, 0.75:Ultra Pro Eclipse Single Sleeved, 0.73:Ultimate Guard Katana Double Sleeved, 0.65:Ultimate Guard Supreme Single Sleeved ]
+SectionExtraSpace = 0.4;
+SectionSizes = [15, 14, 13, 12];
 
 /* [Cutouts] */
 vertical_ratios = [1,1.5,1]; // [1:0.5:5]
@@ -16,9 +18,10 @@ top_cut_depth = 30; //
 
 /* [Hidden] */
 function add(v) = [for(p=v) 1]*v;
+function select(vector, indices) = [ for (index = indices) vector[index] ];
 
 box_width = 69;
-box_height = 69;
+box_height = 70;
 wall_thickness = 0.8;
 
 module box_wall(horizontal_ratios = horizontal_ratios, vertical_ratios = vertical_ratios, side_cut_depth = side_cut_depth, top_cut_depth = top_cut_depth, h = box_height, w = box_width){
@@ -57,7 +60,6 @@ module box_wall(horizontal_ratios = horizontal_ratios, vertical_ratios = vertica
   right_cut_bottom_entrance = [w, h1];
   bottom_right_corner = [w, 0];
   
-  
   points = [
       bottom_left_corner,
       left_cut_bottom_entrance,
@@ -84,16 +86,19 @@ module box_wall(horizontal_ratios = horizontal_ratios, vertical_ratios = vertica
       polygon(points=points);
 }
 
-
+box_depth = add(SectionSizes)*CardThickness + len(SectionSizes) * (SectionExtraSpace + wall_thickness);
 
 box_wall();
-translate([0,10,0]) box_wall(side_cut_depth = 0);
-translate([0,20,0]) box_wall(side_cut_depth = 0);
-translate([0,30,0]) box_wall(side_cut_depth = 0);
-translate([0,40,0]) box_wall();
+for( i = [0:len(SectionSizes)-2] ) {
+  mid_wall_depth = add(select(SectionSizes,[0:i])) * CardThickness + (i+1) * (SectionExtraSpace+wall_thickness);
+  translate([0,mid_wall_depth,0]) box_wall(side_cut_depth = 0);
+}
+translate([0,box_depth,0]) box_wall();
 
-box_depth = 40+wall_thickness;
-translate([-box_width/2, box_depth/2-wall_thickness/2, 0]) rotate([0,0,90]) box_wall(horizontal_ratios = [1,0,1] ,w = box_depth);
-translate([box_width/2, box_depth/2-wall_thickness/2, 0]) rotate([0,0,90]) box_wall(horizontal_ratios = [1,0,1], w = box_depth);
+// Side walls
+external_box_depth = box_depth+wall_thickness;
+translate([-box_width/2, box_depth/2, 0]) rotate([0,0,90]) box_wall(horizontal_ratios = [1,0,1] ,w = external_box_depth);
+translate([box_width/2, box_depth/2, 0]) rotate([0,0,90]) box_wall(horizontal_ratios = [1,0,1], w = external_box_depth);
 
-translate([-box_width/2+wall_thickness/2,-wall_thickness/2,0]) cube([box_width, box_depth, wall_thickness]);
+// Bottom
+translate([-box_width/2+wall_thickness/2,-wall_thickness/2,0]) cube([box_width, external_box_depth, wall_thickness]);
