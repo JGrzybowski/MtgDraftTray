@@ -41,8 +41,8 @@ module box_wall(horizontal_ratios = horizontal_ratios, vertical_ratios = vertica
   // Wall points 
   bottom_left_corner = [0,0];
   left_cut_bottom_entrance = [0,h1];
-  left_cut_bottom_end = [side_cut_depth, h1+side_cut_depth];
-  left_cut_top_end = [side_cut_depth, h1+h2-side_cut_depth];
+  left_cut_bottom_end = [side_cut_depth, h1+side_cut_depth*tan(30)];
+  left_cut_top_end = [side_cut_depth, h1+h2-side_cut_depth*tan(30)];
   left_cut_top_entrance = [0, h1+h2];
   top_left_corner = [0, h];
   top_cut_left_entrance = [w1, h];
@@ -52,8 +52,8 @@ module box_wall(horizontal_ratios = horizontal_ratios, vertical_ratios = vertica
   top_cut_right_entrance = [w1+w2, h];
   top_right_corner = [w, h];
   right_cut_top_entrance = [w, h1+h2];
-  right_cut_top_end = [w-side_cut_depth, h1+h2-side_cut_depth];
-  right_cut_bottom_end = [w-side_cut_depth, h1+side_cut_depth];
+  right_cut_top_end = [w-side_cut_depth, h1+h2-side_cut_depth*tan(30)];
+  right_cut_bottom_end = [w-side_cut_depth, h1+side_cut_depth*tan(30)];
   right_cut_bottom_entrance = [w, h1];
   bottom_right_corner = [w, 0];
   
