@@ -7,12 +7,12 @@ Section_extra_space = 0.4;
 
 Mid_wall_style = 1; // [-1:Cutout, 1:Tab]
 
-/* [Top cutout/tab]  */
+/* [Top (Cutout / Tab)]  */
 
 Vertical_ratios = [2.5,2.5,1.5]; // [1:0.5:5]
 Top_cut_depth = 5; // [3:1:10]
 
-/* [Cutouts] */
+/* [Side Cutouts] */
 Horizontal_ratios = [1,3.5,1]; // [1:0.5:5]
 
 Side_cut_depth = 5; // [2:10]
