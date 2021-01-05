@@ -3,7 +3,7 @@
     "Regular Draft": {
       "Card_thickness": "0.8",
       "Section_extra_space": "0.4",
-      "Section_sizes": "[20, 20, 20]",
+      "Section_sizes": "[15, 15, 15]",
       "Tab": "1",
       "Side_cut_angle": "60",
       "box_height": "70",
@@ -17,7 +17,7 @@
     "Commander Draft": {
       "Card_thickness": "0.8",
       "Section_extra_space": "0.4",
-      "Section_sizes": "[15, 15, 15]",
+      "Section_sizes": "[20, 20, 20]",
       "Tab": "1",
       "Side_cut_angle": "60",
       "box_height": "70",
