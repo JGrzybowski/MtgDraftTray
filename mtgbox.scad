@@ -19,11 +19,13 @@ Side_cut_depth = 5; // [2:10]
 Side_cut_angle = 60;
 
 /* [Hidden] */
+//Do not touch unless you have some container clearance issues
+box_width = 69.5; 
+box_height = 70;
+
 function add(v) = [for(p=v) 1]*v;
 function select(vector, indices) = [ for (index = indices) vector[index] ];
 
-box_width = 69.5;
-box_height = 70;
 wall_thickness = 0.8;
 
 module box_wall(horizontal_ratios = Horizontal_ratios, vertical_ratios = Vertical_ratios, side_cut_depth = Side_cut_depth, Top_cut_depth = Top_cut_depth, h = box_height, w = box_width, Tab = Mid_wall_style){
