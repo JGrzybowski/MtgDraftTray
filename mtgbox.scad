@@ -9,11 +9,11 @@ Mid_wall_style = 1; // [-1:Cutout, 1:Tab]
 
 /* [Top (Cutout / Tab)]  */
 
-Vertical_ratios = [2.5,2.5,1.5]; // [1:0.5:5]
+Vertical_ratios = [2.5,2.5,1.5];
 Top_cut_depth = 5; // [3:1:10]
 
 /* [Side Cutouts] */
-Horizontal_ratios = [1,3.5,1]; // [1:0.5:5]
+Horizontal_ratios = [1,3.5,1]; 
 
 Side_cut_depth = 5; // [2:10]
 Side_cut_angle = 60;
